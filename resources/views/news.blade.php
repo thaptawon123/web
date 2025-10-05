@@ -8,6 +8,7 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700&display=swap" rel="stylesheet" />
     <link href="/css/unified-theme.css" rel="stylesheet" />
     <style>
+<<<<<<< HEAD
        /* Page specific styles */
 .page-body { padding-top: 76px; }
 
@@ -126,6 +127,123 @@
         padding: 1.25rem;
     }
 }
+=======
+        /* Page specific styles */
+        .news-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+            border: 1px solid #f1f5f9;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(239,68,68,0.12);
+        }
+        
+        .news-card .news-image {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .news-card .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .news-card .news-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .news-category {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-red-dark));
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .news-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+            flex-grow: 1; /* Make title push content down */
+        }
+        
+        .news-excerpt {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid #f1f5f9;
+        }
+        
+        .news-date {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        
+        .news-read-more {
+            color: var(--primary-red);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .news-read-more:hover {
+            color: var(--primary-red-dark);
+        }
+        
+        .icon {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+>>>>>>> 65da38d2b5fb355660479d85d5f22a4536035592
     </style>
 </head>
 <body>
@@ -160,7 +278,7 @@
 
                 <div class="grid grid-3" style="gap: 2rem;">
             
-            {{-- ข่าวที่ 1: ประกาศผลผู้ได้รับคัดเลือกเช่าพื้นที่ (ข่าว มรภ.) --}}
+            {{-- ข่าวที่ 1: ประกาศผลผู้ได้รับคัดเลือกเช่าพื้นที่ (ข่าว มรภ.) --}}
             <article class="news-card">
                 <div class="news-image" style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);">
                     📜
@@ -179,7 +297,7 @@
                 </div>
             </article>
 
-            {{-- ข่าวที่ 2: มรน. จัดการประชุม Morning Talk (ข่าว มรภ. นครปฐม) --}}
+            {{-- ข่าวที่ 2: มรน. จัดการประชุม Morning Talk (ข่าว มรภ. นครปฐม) --}}
             <article class="news-card">
                 <div class="news-image" style="background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);">
                     🗣️
@@ -198,7 +316,7 @@
                 </div>
             </article>
 
-            {{-- ข่าวที่ 3: สำนักงานอธิการบดี ร่วมทำบุญ (ข่าว มรภ. นครปฐม) --}}
+            {{-- ข่าวที่ 3: สำนักงานอธิการบดี ร่วมทำบุญ (ข่าว มรภ. นครปฐม) --}}
             <article class="news-card">
                 <div class="news-image" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
                     🙏
@@ -217,10 +335,10 @@
                 </div>
             </article>
 
-            {{-- ข่าวที่ 4: เจาะลึกหลักสูตร (แนะนำหลักสูตร) --}}
+            {{-- ข่าวที่ 4: เจาะลึกหลักสูตร (แนะนำหลักสูตร) --}}
             <article class="news-card">
                 <div class="news-image">
-                    <img src="https://i.ytimg.com/vi/zdRODl64m0A/hq720.jpg" alt="ภาพปกวิดีโอหลักสูตร 2569">
+                    <img src="https://i.ytimg.com/vi/zdRODl64m0A/hq720.jpg" alt="ภาพปกวิดีโอหลักสูตร 2569">
                 </div>
                 <div class="news-content">
                     <span class="news-category" style="background: #3b82f6;">แนะนำหลักสูตร</span>
@@ -236,10 +354,10 @@
                 </div>
             </article>
 
-            {{-- ข่าวที่ 5: เปิดรับสมัคร (ข่าวรับสมัคร) --}}
+            {{-- ข่าวที่ 5: เปิดรับสมัคร (ข่าวรับสมัคร) --}}
             <article class="news-card">
                 <div class="news-image">
-                    <img src="https://i.ytimg.com/vi/jXyZb58_eMo/hq720.jpg" alt="ภาพปกวิดีโอแนะนำสาขา">
+                    <img src="https://i.ytimg.com/vi/jXyZb58_eMo/hq720.jpg" alt="ภาพปกวิดีโอแนะนำสาขา">
                 </div>
                 <div class="news-content">
                     <span class="news-category" style="background: #ef4444;">ข่าวรับสมัคร</span>
@@ -255,10 +373,10 @@
                 </div>
             </article>
 
-            {{-- ข่าวที่ 6: วิดีโอแนะนำสาขา (แนะนำหลักสูตร) --}}
+            {{-- ข่าวที่ 6: วิดีโอแนะนำสาขา (แนะนำหลักสูตร) --}}
             <article class="news-card">
                 <div class="news-image">
-                    <img src="https://i.ytimg.com/vi/dXbkMR99AcM/hq720.jpg" alt="ภาพปกวิดีโอแนะนำสาขา">
+                    <img src="https://i.ytimg.com/vi/dXbkMR99AcM/hq720.jpg" alt="ภาพปกวิดีโอแนะนำสาขา">
                 </div>
                 <div class="news-content">
                     <span class="news-category" style="background: #3b82f6;">แนะนำหลักสูตร</span>
