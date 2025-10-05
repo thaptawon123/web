@@ -8,121 +8,124 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700&display=swap" rel="stylesheet" />
     <link href="/css/unified-theme.css" rel="stylesheet" />
     <style>
-        /* Page specific styles */
-        .news-card {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-            border: 1px solid #f1f5f9;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .news-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(239,68,68,0.12);
-        }
-        
-        .news-card .news-image {
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: white;
-        }
+       /* Page specific styles */
+.page-body { padding-top: 76px; }
 
-        .news-card .news-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .news-card .news-content {
-            padding: 1.5rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .news-category {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary-red), var(--primary-red-dark));
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .news-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 0.75rem;
-            line-height: 1.4;
-            flex-grow: 1; /* Make title push content down */
-        }
-        
-        .news-excerpt {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-        }
-        
-        .news-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 1rem;
-            border-top: 1px solid #f1f5f9;
-        }
-        
-        .news-date {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-        
-        .news-read-more {
-            color: var(--primary-red);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-        
-        .news-read-more:hover {
-            color: var(--primary-red-dark);
-        }
-        
-        .icon {
-            width: 18px;
-            height: 18px;
-            fill: currentColor;
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-            
-            .grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .grid {
-                grid-template-columns: 1fr;
-            }
-        }
+/* Section Header Styles (เหมือน Faculty) */
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem; 
+    padding-bottom: 0;
+    border-bottom: none;
+}
+/* ... (เพิ่ม style สำหรับ .section-title และ .section-subtitle เหมือนใน faculty.blade.php ถ้าต้องการให้ Header เหมือนกัน) ... */
+
+/* News Card Styles - ปรับปรุงการ์ดให้เป็นแนวนอน */
+.news-grid {
+    display: grid;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+}
+
+.news-card {
+    background: white;
+    border-radius: 16px;
+    /* เปลี่ยนจาก padding เป็นการจัดเรียงภายใน */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+    border: 1px solid #f1f5f9;
+    transition: all 0.3s ease;
+    display: flex; /* ใช้ Flexbox สำหรับการจัดเรียงแนวนอน */
+    align-items: stretch;
+    overflow: hidden;
+}
+
+.news-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.news-image {
+    width: 35%; /* รูปภาพใช้พื้นที่ 35% */
+    max-height: 250px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ทำให้รูปภาพเต็มพื้นที่โดยไม่ผิดสัดส่วน */
+    transition: transform 0.3s ease;
+}
+
+.news-card:hover .news-image img {
+    transform: scale(1.05); /* เอฟเฟกต์ซูมเมื่อ Hover */
+}
+
+.news-content {
+    padding: 1.5rem 2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.news-category {
+    display: inline-block;
+    padding: 0.3rem 0.75rem;
+    border-radius: 6px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+}
+
+.news-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.news-date {
+    font-size: 0.9rem;
+    color: #9ca3af;
+}
+
+.news-summary {
+    color: var(--text-secondary);
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.news-read-more {
+    font-weight: 600;
+    color: var(--primary-red);
+    text-decoration: none;
+    transition: color 0.2s;
+    align-self: flex-start;
+}
+
+.news-read-more:hover {
+    color: #ef4444; /* สีแดงเข้มขึ้น */
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .news-card {
+        flex-direction: column; /* เปลี่ยนกลับเป็นแนวตั้งในหน้าจอขนาดเล็ก */
+    }
+    .news-image {
+        width: 100%; 
+        max-height: 200px;
+    }
+    .news-content {
+        padding: 1.25rem;
+    }
+}
     </style>
 </head>
 <body>

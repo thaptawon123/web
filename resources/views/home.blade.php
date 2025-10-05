@@ -14,6 +14,26 @@
     </noscript>
 
     <style>
+        /* ======================================= */
+        /* === 1. NEW OLIVE GREEN COLOR PALETTE === */
+        /* ======================================= */
+        :root {
+            /* Primary Red is replaced with a strong Olive Green */
+            --primary-red: #556B2F; /* Olive Green - Dark and Earthy */
+            --primary-red-light: #2164ffff; /* Honeydew - Very light, almost white for backgrounds/badges */
+            --primary-red-border: #90901bff; /* Olive - for borders on hover */
+            --shadow-light: rgba(85, 107, 47, 0.15); /* Shadow using primary color base */
+            --shadow-medium: rgba(85, 107, 47, 0.3);
+            /* Define a new secondary/button color for 'สมัครสมาชิก' */
+            --secondary-button-bg: #8FBC8F; /* Dark Sea Green */
+            --secondary-button-hover: #6B8E23; /* Olive Drab */
+        }
+        
+        .topbar-right .btn-secondary {
+            background: var(--secondary-button-bg) !important;
+            color: white !important;
+        }
+
         /* Page specific overrides */
         .page-body {
             padding-top: 76px;
@@ -29,7 +49,44 @@
             scroll-margin-top: 20px;
         }
 
-        /* Enhanced news/activity cards */
+        /* ======================================= */
+        /* === 2. NEW STEALTH LAYOUT CSS === */
+        /* ======================================= */
+        
+        /* News Grid Layout: 2/3rds + 1/3rd in the first row, then 3 columns below */
+        .news-grid-layout {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        /* Card 1: Takes up 2/3 of the width (Spotlight) */
+        .news-grid-layout > .news-card:nth-child(1) {
+            grid-column: span 2; 
+        }
+
+        /* Card 2: Takes up 1/3 of the width */
+        .news-grid-layout > .news-card:nth-child(2) {
+            grid-column: span 1; 
+        }
+        
+        /* Make the main image taller for the large spotlight card */
+        .news-grid-layout > .news-card:nth-child(1) .news-card-image {
+            height: 220px; 
+        }
+        
+        /* Faculty Card Layout: Spread cards out instead of centering */
+        .faculty-cards-layout {
+            display: flex;
+            justify-content: space-between; /* Spread them out */
+            align-items: flex-start;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* ======================================= */
+        /* === 3. NEWS/ACTIVITY CARDS (COLORS) === */
+        /* ======================================= */
         .news-card {
             background: var(--bg-primary);
             border-radius: 12px;
@@ -56,10 +113,12 @@
         }
 
         .news-card-image.placeholder {
+            /* Changed background gradient to use the new light color */
             background: linear-gradient(135deg, var(--primary-red-light) 0%, var(--bg-secondary) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
+            /* Changed text color to new Olive Green */
             color: var(--primary-red);
             font-size: 1.5rem;
             font-weight: 700;
@@ -82,7 +141,9 @@
 
         .news-card-date {
             display: inline-block;
+            /* Changed background to new light color */
             background: var(--primary-red-light);
+            /* Changed text color to new Olive Green */
             color: var(--primary-red);
             padding: 0.25rem 0.75rem;
             border-radius: 20px;
@@ -103,6 +164,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            /* Changed text color to new Olive Green */
             color: var(--primary-red);
             text-decoration: none;
             font-weight: 600;
@@ -114,7 +176,9 @@
             text-decoration: underline;
         }
 
-        /* Faculty image styling */
+        /* ======================================= */
+        /* === 4. FACULTY CARDS (COLORS) === */
+        /* ======================================= */
         .faculty-avatar {
             width: 120px;
             height: 120px;
@@ -130,6 +194,7 @@
         .faculty-avatar:hover {
             transform: scale(1.05);
             box-shadow: 0 8px 20px var(--shadow-medium);
+            /* Changed border color to new Olive Green */
             border-color: var(--primary-red);
         }
 
@@ -141,7 +206,8 @@
             box-shadow: 0 4px 12px var(--shadow-light);
             border: 1px solid var(--border-light);
             transition: all 0.3s ease;
-            width: 160px;
+            /* Adjusted width for better distribution */
+            width: 170px;
         }
 
         .faculty-card:hover {
@@ -157,6 +223,7 @@
         }
 
         .faculty-position {
+            /* Changed text color to new Olive Green */
             color: var(--primary-red);
             font-weight: 600;
             font-size: 0.9rem;
@@ -184,20 +251,20 @@
                     <span style="color: var(--text-secondary); margin-right: 1rem;">สวัสดี, {{ Auth::user()->name }}</span>
                     <form method="POST" action="/logout" style="display: inline;">
                         @csrf
-                        <button type="submit" class="btn" style="background: #6b7280;">ออกจากระบบ</button>
+                        <button type="submit" class="btn" style="background: #4A5568;">ออกจากระบบ</button>
                     </form>
                 @else
-                    <a href="/login" class="btn">เข้าสู่ระบบ</a>
-                    <a href="/register" class="btn btn-secondary">สมัครสมาชิก</a>
+                    <a href="/login" class="btn" style="background: var(--primary-red);">เข้าสู่ระบบ</a>
+                    <a href="/register" class="btn btn-secondary" style="background: var(--secondary-button-bg);">สมัครสมาชิก</a>
                 @endauth
             </div>
         </div>
     </div>
 
-    <div id="home" class="banner-hero">
+    <div id="home" class="banner-hero" style="background-color: #556B2F;">
         <div class="banner-content">
-            <h1 style="font-size:3rem; margin-bottom:1rem; font-weight:700; color:var(--text-primary)">Software Engineering</h1>
-            <p style="font-size:1.2rem; opacity:0.8; color:var(--text-secondary)">นวัตกรรมและเทคโนโลยีแห่งอนาคต</p>
+            <h1 style="font-size:3rem; margin-bottom:1rem; font-weight:700; color:block;">Software Engineering</h1>
+            <p style="font-size:1.2rem; opacity:0.8; color: #000;ff;">นวัตกรรมและเทคโนโลยีแห่งอนาคต</p>
         </div>
     </div>
 
@@ -213,16 +280,17 @@
 
                 <section id="programs" style="margin-top:1.75rem; text-align:center;">
                     <h2 style="font-weight:700; margin-bottom:0.75rem;">หลักสูตรการเรียน</h2>
-                    <p style="color:#6b7280; max-width:800px; margin:0 auto;">
+                    <p style="color:#4A5568; max-width:800px; margin:0 auto;">
                         หลักสูตรวิทยาศาสตรบัณฑิต สาขาวิชาวิศวกรรมซอฟต์แวร์ เน้นการเรียนรู้เกี่ยวกับกระบวนการผลิตและพัฒนาซอฟต์แวร์อย่างเป็นระบบ การเขียนโปรแกรมคอมพิวเตอร์ การพัฒนาเว็บไซต์และแอปพลิเคชันมือถือ โดยมีจำนวนหน่วยกิตรวมตลอดหลักสูตรไม่น้อยกว่า 129 หน่วยกิต
                     </p>
                 </section>
 
                 <h3 style="margin-top:1rem; display:flex; justify-content:space-between; align-items:center;">
                     <span>การ์ดข่าว/กิจกรรม</span>
-                    <a href="/news" class="btn btn-small">ดูทั้งหมด</a>
+                    <a href="/news" class="btn btn-small" style="background: var(--primary-red);">ดูทั้งหมด</a>
                 </h3>
-                <div class="grid grid-3 mt-2">
+                
+                <div class="news-grid-layout mt-2">
                     <div class="news-card">
                         <img src="http://pgm.npru.ac.th/se/data/images/moon%20star.png" alt="ประกาศผลคัดเลือกเช่าพื้นที่" class="news-card-image">
                         <div class="news-card-content">
@@ -287,9 +355,9 @@
                 <section id="faculty" class="section text-center">
                     <div class="flex flex-between mb-2">
                         <h2 class="section-title" style="font-size:1.4rem; margin:0;">อาจารย์ประจำสาขา</h2>
-                        <a href="/faculty" class="btn btn-small">ดูทั้งหมด</a>
+                        <a href="/faculty" class="btn btn-small" style="background: var(--primary-red);">ดูทั้งหมด</a>
                     </div>
-                    <div class="flex flex-center gap-3" style="flex-wrap:wrap;">
+                    <div class="faculty-cards-layout" style="flex-wrap:wrap;">
                         <div class="faculty-card">
                             <img src="/images/faculty/j3.png" alt="อาจารย์ ดร. วรเชษฐ์ อุทธา" class="faculty-avatar">
                             <div class="faculty-name">อาจารย์ ดร. วรเชษฐ์ อุทธา</div>
