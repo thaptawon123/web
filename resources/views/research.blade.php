@@ -10,29 +10,7 @@
     <link href="/css/research-page.css" rel="stylesheet" /> 
 </head>
 <body>
-    <div class="topbar">
-        <div class="topbar-content">
-            <div class="nav-links">
-                <a href="/" class="nav-link">หน้าหลัก</a>
-                <a href="/programs" class="nav-link">หลักสูตร</a>
-                <a href="/faculty" class="nav-link">คณะจารย์</a>
-                <a href="/research" class="nav-link active">งานวิจัย</a>
-                <a href="/news" class="nav-link">ข่าวสาร</a>
-            </div>
-            <div class="topbar-right">
-                @auth
-                    <span style="color: var(--text-secondary); margin-right: 1rem;">สวัสดี, {{ Auth::user()->name }}</span>
-                    <form method="POST" action="/logout" style="display: inline;">
-                        @csrf
-                        <button type="submit" class="btn" style="background: #6b7280;">ออกจากระบบ</button>
-                    </form>
-                @else
-                    <a href="/login" class="btn">เข้าสู่ระบบ</a>
-                @endauth
-                <a href="/admin" class="btn btn-secondary">จัดการ</a>
-            </div>
-        </div>
-    </div>
+    @include('partials.topbar')
 
     <div class="container page-body">
         <div class="card text-center" style="margin-bottom: 2rem; padding: 2rem;">

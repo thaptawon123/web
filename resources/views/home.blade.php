@@ -225,34 +225,7 @@
 </head>
 
 <body>
-    <div class="topbar">
-        <div class="topbar-content">
-            <div style="display:flex; align-items:center; gap:1rem;">
-                <a href="/" style="display:inline-block">
-                    <img src="https://software-engineering-npru.vercel.app/logo.png" alt="SE Logo" style="height:44px; object-fit:contain;" />
-                </a>
-                <div class="nav-links">
-                    <a href="/" class="nav-link active">หน้าหลัก</a>
-                    <a href="/programs" class="nav-link">หลักสูตร</a>
-                    <a href="/faculty" class="nav-link">อาจารย์ประจำสาขา</a>
-                    <a href="/research" class="nav-link">งานวิจัย</a>
-                    <a href="/news" class="nav-link">ข่าวสาร</a>
-                </div>
-            </div>
-            <div class="topbar-right">
-                @auth
-                    <span style="color: var(--text-secondary); margin-right: 1rem;">สวัสดี, {{ Auth::user()->name }}</span>
-                    <form method="POST" action="/logout" style="display: inline;">
-                        @csrf
-                        <button type="submit" class="btn">ออกจากระบบ</button>
-                    </form>
-                @else
-                    <a href="/login" class="btn">เข้าสู่ระบบ</a>
-                    <a href="/register" class="btn btn-secondary">สมัครสมาชิก</a>
-                @endauth
-            </div>
-        </div>
-    </div>
+    @include('partials.topbar')
 
     <div id="home" class="banner-hero">
         <div class="banner-content">

@@ -212,34 +212,7 @@
     </style>
 </head>
 <body>
-    <div class="topbar">
-        <div class="topbar-content">
-            <div style="display:flex; align-items:center; gap:1rem;">
-                <a href="/" style="display:inline-block">
-                    <img src="https://software-engineering-npru.vercel.app/logo.png" alt="SE Logo" style="height:44px; object-fit:contain;" />
-                </a>
-                <div class="nav-links">
-                    <a href="/" class="nav-link">หน้าหลัก</a>
-                    <a href="/programs" class="nav-link active">หลักสูตร</a>
-                    <a href="/faculty" class="nav-link">คณาจารย์</a>
-                    <a href="/research" class="nav-link">งานวิจัย</a>
-                    <a href="/news" class="nav-link">ข่าวสาร</a>
-                </div>
-            </div>
-            <div class="topbar-right">
-                @auth
-                    <span style="color: var(--text-secondary); margin-right: 1rem;">สวัสดี, {{ Auth::user()->name }}</span>
-                    <form method="POST" action="/logout" style="display: inline;">
-                        @csrf
-                        <button type="submit" class="btn" style="background: #6b7280;">ออกจากระบบ</button>
-                    </form>
-                @else
-                    <a href="/login" class="btn" style="background: var(--primary-navy);">เข้าสู่ระบบ</a>
-                @endauth
-                <a href="/admin" class="btn btn-secondary" style="background: var(--primary-blue);">จัดการ</a>
-            </div>
-        </div>
-    </div>
+    @include('partials.topbar')
 
     <div class="container">
         <div class="card text-center" style="margin-bottom: 2rem; padding: 2rem; background: var(--bg-secondary); border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">

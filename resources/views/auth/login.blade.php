@@ -89,6 +89,22 @@
             margin-bottom: 1.5rem;
             font-size: 0.9rem;
         }
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            margin-bottom: 1rem;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px var(--shadow-light);
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
         
         .auth-links {
             text-align: center;
@@ -124,16 +140,13 @@
 <body>
     <div class="login-container">
         <div class="login-card">
-            <a href="/" class="back-link">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"/>
-                </svg>
-                กลับหน้าแรก
-            </a>
-            
             <div class="login-header">
                 <h1 class="login-title">เข้าสู่ระบบ</h1>
                 <p class="login-subtitle">สาขาวิชา Software Engineering</p>
+            </div>
+
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/BCyOqIaEUQE?si=aIUqeyDQAhQdu5dM" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
             
             @if(session('success'))

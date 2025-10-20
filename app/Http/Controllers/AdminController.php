@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Admin;
 use App\Models\Faculty;
 
@@ -44,11 +45,9 @@ class AdminController extends Controller
             'password' => 'required',
         ]);
 
-        $admin = Admin::where('email', $request->input('email'))->first();
-        if ($admin && Hash::check($request->input('password'), $admin->password)) {
-            $request->session()->put('admin_logged_in', true);
-            $request->session()->put('admin_id', $admin->id);
-            // Redirect to admin panel
+        $credentials = $request->only('email', 'password');
+        if (Auth::guard('admin')->attempt($credentials, false)) {
+            $request->session()->regenerate();
             return redirect()->to('/admin/panel');
         }
 
@@ -57,17 +56,14 @@ class AdminController extends Controller
 
     public function logout(Request $request)
     {
-        $request->session()->forget('admin_logged_in');
-        $request->session()->forget('admin_id');
+        Auth::guard('admin')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         return redirect('/');
     }
 
     public function panel(Request $request)
     {
-        if (!$request->session()->get('admin_logged_in')) {
-            return redirect('/admin');
-        }
-
         $content = $this->loadContent();
         $faculties = Faculty::orderBy('id')->get();
         return view('admin.panel', ['content' => $content, 'faculties' => $faculties]);
@@ -75,10 +71,6 @@ class AdminController extends Controller
 
     public function save(Request $request)
     {
-        if (!$request->session()->get('admin_logged_in')) {
-            return redirect('/admin');
-        }
-
         $content = $this->loadContent();
 
         // text fields
@@ -134,7 +126,6 @@ class AdminController extends Controller
     // faculty create
     public function createFaculty(Request $request)
     {
-        if (!$request->session()->get('admin_logged_in')) return redirect('/admin');
         $data = $request->validate([
             'name' => 'required|string',
             'degree' => 'nullable|string',
@@ -154,7 +145,6 @@ class AdminController extends Controller
 
     public function deleteFaculty(Request $request, $id)
     {
-        if (!$request->session()->get('admin_logged_in')) return redirect('/admin');
         $f = Faculty::find($id);
         if ($f) $f->delete();
         return back()->with('status', 'ลบอาจารย์เรียบร้อย');
